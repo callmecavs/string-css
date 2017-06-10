@@ -102,9 +102,15 @@ const css = () => {
       })
   }
 
+  // render styles down to a string
+  const render = () => {
+
+  }
+
   return {
     css,
-    inject
+    inject,
+    render
   }
 }
 
