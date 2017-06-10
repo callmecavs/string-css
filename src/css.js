@@ -48,29 +48,22 @@ const css = () => {
         value
       ] = rule
 
-      // check for prop in styles
-      if (style[prop]) {
-        //  check for value in prop cache
-        if (style[prop][value]) {
-          // append space, then append cached class name
-          name += ' '
-          name += style[prop][value]
-        } else {
-          // TODO: cache miss, create new entry and deterministic class name
-        }
-      } else {
-        // create prop cache
-        style[prop] = {}
+      // create empty prop cache if needed
+      style[prop] = style[prop] || {}
 
+      // check for value in prop cache
+      if (style[prop][value]) {
+        // append cached class name and space to name
+        name += `${style[prop][value]} `
+      } else {
         // generate deterministic class name from prop -> value pair
         const hashed = hash(rule.join(''))
 
         // cache the value
         style[prop][value] = hashed
 
-        // append space, then hashed class to name
-        name += ' '
-        name += hashed
+        // append hashed class and space to name
+        name += `${hashed} `
       }
     })
 
