@@ -1,4 +1,6 @@
 const css = () => {
+  const style = {}
+
   // immutably concat strings and values together
   const concat = (strings, values) => {
     const len = strings.length
@@ -34,7 +36,34 @@ const css = () => {
           .split(':')                 // split into property and value
       })
 
-    console.log(rules)
+    // run the rules against the cache
+    // return the cumulative class name
+    let name = ''
+
+    rules.forEach(rule => {
+      const [
+        prop,
+        value
+      ] = rule
+
+      // check for prop in styles
+      if (style.prop) {
+        //  check for value in prop cache
+        if (style.prop.value) {
+          // append space, then append cached class name
+          name += ' '
+          name += style.prop.value
+        } else {
+          // TODO: cache miss, create new entry and deterministic class name
+        }
+      } else {
+        // TODO: cache miss, create new entry and deterministic class name
+      }
+    })
+
+    console.log(style)
+
+    return name
   }
 
   return parse
