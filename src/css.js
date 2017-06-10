@@ -22,6 +22,7 @@ const css = () => {
   const parse = (strings, ...values) => {
     // reduce CSS string to an array of property -> value pairs
     // TODO: add & support, hover/media support, etc
+    // TODO: check this logic, might be possible to replace whitepace immediately
     const rules = concat(strings, values)
       .trim()
       .split('\n')                                          // assume 1 rule per line
