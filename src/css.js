@@ -23,7 +23,7 @@ const css = () => {
   }
 
   // parse template string into class name(s)
-  const parse = (strings, ...values) => {
+  const css = (strings, ...values) => {
     // reduce CSS string to an array of property -> value pairs
     // TODO: add & support, hover/media support, etc
     // TODO: check this logic, might be possible to replace whitepace immediately
@@ -103,7 +103,7 @@ const css = () => {
   }
 
   return {
-    parse,
+    css,
     inject
   }
 }
