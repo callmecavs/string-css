@@ -11,6 +11,17 @@
     <script>
       console.log('Module assigned to window.Css. Logged below:')
       console.log(Css)
+
+      const black = 'black'
+      const block = 'block'
+
+      Css`
+        display: ${ block };
+        width: 100px;
+        height: 100px;
+
+        background-color: ${ black };
+      `
     </script>
   </body>
 </html>
