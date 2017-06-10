@@ -1,5 +1,5 @@
-const css = (strings, ...values) => {
-  // immutably weave strings and values together
+const css = () => {
+  // immutably concat strings and values together
   const concat = (strings, values) => {
     const len = strings.length
 
@@ -18,7 +18,16 @@ const css = (strings, ...values) => {
     return result
   }
 
-  console.log(concat(strings, values))
+  // parse template string into class name(s)
+  const parse = (strings, ...values) => {
+    const chain = concat(strings, values)
+
+    console.log(chain)
+  }
+
+  return parse
 }
 
-export default css
+const singleton = css()
+
+export default singleton
