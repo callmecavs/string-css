@@ -15,10 +15,15 @@
       console.log('Module assigned to window.Css. Logged below:')
       console.log(Css)
 
+      const {
+        css,
+        inject
+      } = Css
+
       const black = 'black'
       const block = 'block'
 
-      document.getElementById('test-1').className = Css.parse`
+      document.getElementById('test-1').className = css`
         display: ${ block };
         width: 100px;
         height: 100px;
@@ -26,7 +31,7 @@
         background-color: ${ black };
       `
 
-      document.getElementById('test-2').className = Css.parse`
+      document.getElementById('test-2').className = css`
         display: ${ block };
         width: 50px;
         height: 50px;
@@ -34,7 +39,7 @@
         background-color: ${ black };
       `
 
-      Css.inject()
+      inject()
     </script>
   </body>
 </html>
