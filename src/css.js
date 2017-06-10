@@ -53,8 +53,8 @@ const css = () => {
 
       // check for value in prop cache
       if (style[prop][value]) {
-        // append cached class name and space to name
-        name += `${style[prop][value]} `
+        // append prefixed, cached class name and space to name
+        name += `css-${style[prop][value]} `
       } else {
         // generate deterministic class name from prop -> value pair
         const hashed = hash(rule.join(''))
@@ -62,8 +62,8 @@ const css = () => {
         // cache the value
         style[prop][value] = hashed
 
-        // append hashed class and space to name
-        name += `${hashed} `
+        // append prefixed, hashed class and space to name
+        name += `css-${hashed} `
       }
     })
 
@@ -79,6 +79,27 @@ const css = () => {
 
     // retrieve sheet after injecting
     const sheet = tag.sheet
+
+    // iterate props
+    Object
+      .keys(style)
+      .forEach(propName => {
+        const propObj = style[propName]
+
+        // iterate values
+        Object
+          .keys(propObj)
+          .forEach(valueName => {
+            const className = propObj[valueName]
+
+            // create rule that applies style to class name
+            // prefix the class name, because the hashed name might start with a number
+            const rule = `.css-${className} { ${propName}: ${valueName}; }`
+
+            // inject rule at head of sheet
+            sheet.insertRule(rule, 0)
+          })
+      })
   }
 
   return {
