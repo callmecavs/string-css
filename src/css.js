@@ -70,7 +70,21 @@ const css = () => {
     return name
   }
 
-  return parse
+  // inject rules into a style tag, and into the DOM
+  const inject = () => {
+    // create and inject style tag
+    const tag = document.createElement('style')
+    tag.setAttribute('data-css', '')
+    document.head.appendChild(tag)
+
+    // retrieve sheet after injecting
+    const sheet = tag.sheet
+  }
+
+  return {
+    parse,
+    inject
+  }
 }
 
 const singleton = css()
