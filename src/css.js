@@ -20,9 +20,20 @@ const css = () => {
 
   // parse template string into class name(s)
   const parse = (strings, ...values) => {
-    const chain = concat(strings, values)
+    // reduce CSS string to an array of property -> value pairs
+    // TODO: add & support, hover/media support, etc
+    const rules = concat(strings, values)
+      .trim()
+      .split('\n')                                          // assume 1 rule per line
+      .filter(string => string.indexOf(':') !== -1)         // remove invalid rules
+      .map(string => {
+        return string
+          .replace(/\s/g, '')         // remove whitespace
+          .slice(0, -1)               // remove semicolon
+          .split(':')                 // split into property and value
+      })
 
-    console.log(chain)
+    console.log(rules)
   }
 
   return parse
