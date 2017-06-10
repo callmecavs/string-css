@@ -1,3 +1,5 @@
+import hash from './hash.js'
+
 const css = () => {
   const style = {}
 
@@ -47,21 +49,30 @@ const css = () => {
       ] = rule
 
       // check for prop in styles
-      if (style.prop) {
+      if (style[prop]) {
         //  check for value in prop cache
-        if (style.prop.value) {
+        if (style[prop][value]) {
           // append space, then append cached class name
           name += ' '
-          name += style.prop.value
+          name += style[prop][value]
         } else {
           // TODO: cache miss, create new entry and deterministic class name
         }
       } else {
-        // TODO: cache miss, create new entry and deterministic class name
+        // create prop cache
+        style[prop] = {}
+
+        // generate deterministic class name from prop -> value pair
+        const hashed = hash(rule.join(''))
+
+        // cache the value
+        style[prop][value] = hashed
+
+        // append space, then hashed class to name
+        name += ' '
+        name += hashed
       }
     })
-
-    console.log(style)
 
     return name
   }
