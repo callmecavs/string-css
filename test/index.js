@@ -1,11 +1,10 @@
 const expect = require('chai').expect
-const lib = require('../dist/string-css.js')
 
 const {
   css,
   inject,
   string
-} = lib
+} = require('../dist/string-css.js')
 
 /* eslint-env mocha */
 
