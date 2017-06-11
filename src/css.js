@@ -24,7 +24,13 @@ const css = () => {
 
   // parse template string into class name(s)
   const css = (strings, ...values) => {
+    // reduce CSS string to an array of "prop:value" rule strings
+    const rules = concat(strings, values)
+      .replace(/\s/g, '')         // remove whitespace (including new lines)
+      .slice(0, -1)               // remove trailing semicolon
+      .split(';')                 // split on semicolons yielding rule strings
 
+    console.log(rules)
   }
 
   // inject rules into a style tag, and into the DOM
