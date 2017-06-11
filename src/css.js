@@ -85,7 +85,26 @@ const css = () => {
 
   // render styles down to a string
   const render = () => {
+    let total = ''
 
+    // iterate rules
+    let append
+    let name
+
+    Object
+      .keys(style)
+      .forEach(rule => {
+        // retrieve class name from cache
+        name = style[rule]
+
+        // create full CSS string to inject using class name and rule
+        append = `.css-${name}{${rule}}`
+
+        // append to cumulative CSS string
+        total += append
+      })
+
+    return total
   }
 
   return {
