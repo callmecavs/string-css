@@ -4,7 +4,7 @@ const lib = require('../dist/string-css.js')
 const {
   css,
   inject,
-  render
+  string
 } = lib
 
 /* eslint-env mocha */
@@ -34,7 +34,7 @@ describe('string-css', () => {
     `
 
     // render styles to string
-    const test = render()
+    const test = string()
 
     // notice expected has the common rules deduped
     const expected = '.css-4zleql{display:block}.css-1pzk433{width:100px}.css-1hgqtge{height:100px}.css-ayn9pq{background-color:black}.css-1u5b859{width:50px}.css-1leqlh9{height:50px}'

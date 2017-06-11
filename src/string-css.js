@@ -83,8 +83,8 @@ const css = () => {
       })
   }
 
-  // render styles down to a string
-  const render = () => {
+  // stringify styles object
+  const string = () => {
     let total = ''
 
     // iterate rules
@@ -110,7 +110,7 @@ const css = () => {
   return {
     css,
     inject,
-    render
+    string
   }
 }
 
