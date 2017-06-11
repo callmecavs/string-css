@@ -16,11 +16,16 @@ The export is a singleton containing 3 methods:
 * [`inject`](#inject)
 * [`string`](#string)
 
+Bearing in mind the use of the singleton pattern, calls to `inject` or `string` should appear after all styles are created.
+
 ### .css(string)
 
-The function that parses template strings.
+The function that parses CSS-in-JS template strings.
 
 ```javascript
+import { css } from 'string-css'
+
+// constants should be external
 const BLACK = 'black'
 const BLOCK = 'block'
 
