@@ -4,7 +4,7 @@ import resolve from 'rollup-plugin-node-resolve'
 const info = require('./package.json')
 
 const config = {
-  entry: 'src/css.js',
+  entry: 'src/string-css.js',
   plugins: [
     resolve(),
     babel({
@@ -25,7 +25,7 @@ const config = {
     {
       dest: info.main,
       format: 'umd',
-      moduleName: 'Css'
+      moduleName: 'StringCSS'
     }, {
       dest: info.module,
       format: 'es'

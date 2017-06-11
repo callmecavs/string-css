@@ -1,28 +1,38 @@
 {
-  "name": "css.js",
-  "description": "",
-  "main": "dist/css.js",
-  "module": "dist/css.module.js",
-  "jsnext:main": "dist/css.module.js",
+  "name":        "string-css",
+  "description": "Create CSS in JavaScript via tagged template strings.",
+
+  "main":        "dist/string-css.js",
+  "module":      "dist/string-css.module.js",
+  "jsnext:main": "dist/string-css.module.js",
+
   "version": "0.0.1",
-  "license": "",
-  "repository": "",
+  "license": "MIT",
+
+  "repository": "callmecavs/string-css",
+
   "author": {
-    "name": "",
-    "email": "",
-    "url": ""
+    "name":  "Michael Cavalea",
+    "email": "callmecavs@gmail.com",
+    "url":   "http://callmecavs.com/"
   },
+
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w -m inline",
-    "lint": "eslint src",
-    "prebuild": "rm -rf dist",
+    "build":      "rollup -c",
+    "dev":        "rollup -c -w -m inline",
+    "lint":       "eslint src",
+    "prebuild":   "rm -rf dist",
     "prepublish": "npm run test",
-    "pretest": "npm run build",
-    "server": "python -m SimpleHTTPServer 3000",
-    "test": "npm run lint && mocha"
+    "pretest":    "npm run build",
+    "server":     "python -m SimpleHTTPServer 3000",
+    "test":       "npm run lint && mocha"
   },
-  "keywords": [],
+
+  "keywords": [
+    "string",
+    "css"
+  ],
+
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "babel-preset-env": "^1.2.2",

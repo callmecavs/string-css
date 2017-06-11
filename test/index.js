@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-const lib = require('../dist/css.js')
+const lib = require('../dist/string-css.js')
 
 const {
   css,
@@ -9,7 +9,7 @@ const {
 
 /* eslint-env mocha */
 
-describe('css', () => {
+describe('string-css', () => {
   it('should work', () => {
     // CSS prop constants
     const BLACK = 'black'
