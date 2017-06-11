@@ -30,7 +30,29 @@ const css = () => {
       .slice(0, -1)               // remove trailing semicolon
       .split(';')                 // split on semicolons yielding rule strings
 
-    console.log(rules)
+    // build the cumulative class name, using the cache
+    let name = ''
+
+    rules.forEach(rule => {
+      if (style[rule]) {
+        // cache hit - append: prefix, cached class name, whitespace
+        name += `css-${style[rule]} `
+      } else {
+        // create deterministic class name from "prop:value" string
+        const hashed = hash(rule)
+
+        // cache it
+        style[rule] = hashed
+
+        // append: prefix, new class name, whitespace
+        name += `css-${hashed} `
+      }
+    })
+
+    // remove extra trailing space
+    name = name.slice(0, -1)
+
+    return name
   }
 
   // inject rules into a style tag, and into the DOM
