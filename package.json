@@ -1,6 +1,6 @@
 {
   "name":        "string-css",
-  "description": "Create CSS in JavaScript via tagged template strings.",
+  "description": "Create CSS-in-JS via tagged template strings.",
 
   "main":        "dist/string-css.js",
   "module":      "dist/string-css.module.js",
