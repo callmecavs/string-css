@@ -57,7 +57,30 @@ const css = () => {
 
   // inject rules into a style tag, and into the DOM
   const inject = () => {
+    // create and inject style tag
+    const tag = document.createElement('style')
+    tag.setAttribute('data-css', '')
+    document.head.appendChild(tag)
 
+    // retrieve sheet after injecting
+    const sheet = tag.sheet
+
+    // inject rules
+    let inject
+    let name
+
+    Object
+      .keys(style)
+      .forEach(rule => {
+        // retrieve class name from cache
+        name = style[rule]
+
+        // create full CSS string to inject using class name and rule
+        inject = `.css-${name}{ ${rule} }`
+
+        // inject rule at head of sheet
+        sheet.insertRule(inject, 0)
+      })
   }
 
   // render styles down to a string
