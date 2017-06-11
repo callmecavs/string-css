@@ -45,7 +45,30 @@ document.getElementById('example').className = rule
 
 ### .inject()
 
+Injects created styles into the DOM, using [`insertRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule).
+
+```javascript
+import { inject } from 'string-css'
+
+// synchronously creates a style tag in the head, then inserts the rules
+inject()
+```
+
 ### .string()
+
+Returns a string representation of all the created CSS.
+
+```javascript
+import { string } from 'string-css'
+
+// synchronously creates a string of CSS
+const style = string()
+```
+
+## See Also
+
+* [hsx](https://github.com/callmecavs/hsx) - Static HTML sites with JSX and webpack (no React).
+* [string-dom](https://github.com/callmecavs/string-dom) - Create HTML strings using JSX (or functions).
 
 ## License
 
